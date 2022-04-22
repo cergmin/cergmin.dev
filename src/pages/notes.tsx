@@ -1,16 +1,16 @@
 import React from 'react';
-import s from '@/resources/styles/pages/home.module.css';
+import s from '@/resources/styles/pages/notes.module.css';
 
-function HomePage() {
+function NotesPage() {
   return (
     <main>
       <div className="wrapper">
         <div className={s.layout}>
-          <h1>Главная</h1>
+          <h1>Конспекты</h1>
         </div>
       </div>
     </main>
   );
 }
 
-export default HomePage;
+export default NotesPage;

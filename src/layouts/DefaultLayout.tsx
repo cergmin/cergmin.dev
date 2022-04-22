@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import Header from '@/components/Header';
 
 export interface DefaultLayoutProps {
   children: ReactNode;
@@ -50,6 +51,7 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
           rel="stylesheet"
         />
       </Head>
+      <Header />
       {children}
     </>
   );

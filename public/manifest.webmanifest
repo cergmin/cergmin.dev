@@ -1,0 +1,32 @@
+{
+  "name": "Notes",
+  "short_name": "Notes",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "Notes",
+  "icons": [
+    {
+      "src": "/resources/images/favicons/192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/resources/images/favicons/512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/resources/images/favicons/192x192_maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/resources/images/favicons/512x512_maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

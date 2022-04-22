@@ -1,0 +1,24 @@
+:root {
+    --ff-sans-serif: 'Roboto', sans-serif;
+    --ff-code: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+}
+
+body {
+    background-color: var(--background-base);
+    color: var(--text-base);
+    font-family: var(--ff-sans-serif, sans-serif);
+}
+
+.wrapper {
+    --wrapper-max-width: 1000px;
+    --wrapper-padding: clamp(24px, 3.2vw, 32px);
+
+    width: 100%;
+    max-width: calc(
+        var(--wrapper-max-width) + 2 * var(--wrapper-padding)
+    );
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 var(--wrapper-padding);
+    margin: 0 auto;
+}

@@ -1,0 +1,35 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "private": true,
+      "author": "Sergey Minakov <cergmin@gmail.com>",
+      "license": "MIT",
+      "scripts": {
+        "start": "eleventy --serve"
+      }
+    },
+    "prefix": "C:\\Users\\Katya\\Desktop\\yandex\\components\\docs"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "C:\\Users\\Katya\\.pnpm-store\\v3",
+    "virtualStoreDir": "C:\\Users\\Katya\\Desktop\\yandex\\components\\docs\\node_modules\\.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "C:\\Users\\Katya\\Desktop\\yandex\\components\\docs",
+    "stage": "resolution_started"
+  },
+  "4 error pnpm": {
+    "code": "ERR_PNPM_SPEC_NOT_SUPPORTED_BY_ANY_RESOLVER",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "private: isn't supported by any available resolver.",
+      "code": "ERR_PNPM_SPEC_NOT_SUPPORTED_BY_ANY_RESOLVER",
+      "stack": "pnpm: private: isn't supported by any available resolver.\n    at Object.resolve (C:\\Users\\Katya\\AppData\\Roaming\\npm\\pnpm-global\\5\\node_modules\\.pnpm\\pnpm@6.25.0\\node_modules\\pnpm\\dist\\pnpm.cjs:85923:17)\n    at async run (C:\\Users\\Katya\\AppData\\Roaming\\npm\\pnpm-global\\5\\node_modules\\.pnpm\\pnpm@6.25.0\\node_modules\\pnpm\\dist\\pnpm.cjs:71568:23)"
+    }
+  }
+}

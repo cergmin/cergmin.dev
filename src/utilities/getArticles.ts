@@ -15,14 +15,23 @@ async function getArticleDataPaths(
   sourcePath: string,
   metaPath?: string,
 ): Promise<{ articlePath: string; metaPath?: string }[]> {
-  let filesDebug = readdirSync(join(sourcePath, '..'), { withFileTypes: true });
-  for (const file of filesDebug) {
-    console.log(join(sourcePath, '..', file.name));
-  }
-
-  filesDebug = readdirSync(join(sourcePath, '../..'), { withFileTypes: true });
-  for (const file of filesDebug) {
-    console.log(join(sourcePath, '../..', file.name));
+  try {
+    let filesDebug = readdirSync(join(sourcePath, '../../..'), { withFileTypes: true });
+    for (const file of filesDebug) {
+      console.log(join(sourcePath, '../../..', file.name));
+    }
+    
+    filesDebug = readdirSync(join(sourcePath, '../..'), { withFileTypes: true });
+    for (const file of filesDebug) {
+      console.log(join(sourcePath, '../..', file.name));
+    }
+    
+    filesDebug = readdirSync(join(sourcePath, '..'), { withFileTypes: true });
+    for (const file of filesDebug) {
+      console.log(join(sourcePath, '..', file.name));
+    }
+  } catch (e) {
+    console.error(e);
   }
 
   if (!existsSync(sourcePath)) {

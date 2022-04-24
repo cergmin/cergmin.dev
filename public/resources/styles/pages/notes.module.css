@@ -2,3 +2,16 @@
   width: 100%;
   padding-top: 1rem;
 }
+
+.notes {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 10rem;
+  grid-auto-flow: dense;
+  gap: var(--gap-l);
+}
+
+.note {
+  height: 100%;
+}

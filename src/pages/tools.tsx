@@ -6,7 +6,7 @@ function ToolsPage() {
     <main>
       <div className="wrapper">
         <div className={s.layout}>
-          <h1>Инструменты</h1>
+          <h1 className="pageTitle">Инструменты</h1>
         </div>
       </div>
     </main>

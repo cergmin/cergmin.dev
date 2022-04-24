@@ -1,24 +1,68 @@
 :root {
-    --ff-sans-serif: 'Roboto', sans-serif;
-    --ff-code: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  --ff-headings: 'RF Tone', 'Segoe UI', sans-serif;
+  --ff-sans-serif: 'Segoe UI', 'RF Tone', 'Roboto', sans-serif;
+  --ff-monospace: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
+    Courier, monospace;
+  --ff-serif: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua',
+    Georgia, serif;
+  --fs-xs: 0.75rem;
+  --fs-s: 0.875rem;
+  --fs-m: 1rem;
+  --fs-l: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 1.75rem;
+  --fs-4xl: 2rem;
+  --fs-5xl: 2.5rem;
+  --fs-6xl: 3rem;
+  --lh-tight: 1.25;
+  --lh-base: 1.5;
+  --gap-s: 0.5rem;
+  --gap-m: 0.75rem;
+  --gap-l: 1rem;
+  --block-margin-xs: 0.5rem;
+  --block-margin-s: 1rem;
+  --block-margin-m: 1.25rem;
+  --block-margin-l: 1.5rem;
+  --radius-s: 3px;
+  --radius-m: 5px;
+  --radius-l: 7px;
 }
 
 body {
-    background-color: var(--background-base);
-    color: var(--text-base);
-    font-family: var(--ff-sans-serif, sans-serif);
+  background-color: var(--background-base);
+  color: var(--text-base);
+  font-family: var(--ff-sans-serif, sans-serif);
 }
 
 .wrapper {
-    --wrapper-max-width: 1000px;
-    --wrapper-padding: clamp(24px, 3.2vw, 32px);
+  --wrapper-max-width: 1000px;
+  --wrapper-padding: clamp(24px, 3.2vw, 32px);
 
-    width: 100%;
-    max-width: calc(
-        var(--wrapper-max-width) + 2 * var(--wrapper-padding)
-    );
-    height: 100%;
-    box-sizing: border-box;
-    padding: 0 var(--wrapper-padding);
-    margin: 0 auto;
+  width: 100%;
+  max-width: calc(var(--wrapper-max-width) + 2 * var(--wrapper-padding));
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 var(--wrapper-padding);
+  margin: 0 auto;
+}
+
+.pageTitle {
+  margin-bottom: var(--block-margin-s);
+  font-size: var(--fs-5xl);
+  font-weight: 900;
+  font-family: var(--ff-headings);
+  line-height: var(--lh-tight);
+}
+
+@media (max-width: 1024px) {
+  .pageTitle {
+    font-size: var(--fs-4xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: var(--fs-3xl);
+  }
 }

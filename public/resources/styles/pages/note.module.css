@@ -1,0 +1,9 @@
+.layout {
+  width: 100%;
+  padding: 1rem 0;
+  min-height: calc(100vh - 3.5rem);
+}
+
+.note {
+  max-width: 800px;
+}

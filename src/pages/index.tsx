@@ -6,7 +6,7 @@ function HomePage() {
     <main>
       <div className="wrapper">
         <div className={s.layout}>
-          <h1>Главная</h1>
+          <h1 className="pageTitle">Главная</h1>
         </div>
       </div>
     </main>

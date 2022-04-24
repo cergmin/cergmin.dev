@@ -50,7 +50,7 @@ export default NotesPage;
 
 export async function getServerSideProps() {
   const articles = await getArticles(
-    join(process.env.ROOT_PATH, 'src/content/notes'),
+    join(__dirname, '../../../src/content/notes'),
   );
 
   const notes: Note[] = articles.map((article) => {

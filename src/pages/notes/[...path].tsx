@@ -46,8 +46,8 @@ export default NotePage;
 export async function getServerSideProps(context: NextPageContext) {
   let { path: notePath } = context.query;
   notePath = join(
-    process.env.ROOT_PATH,
-    'src/content/notes',
+    __dirname,
+    '../../../src/content/notes',
     ...(Array.isArray(notePath) ? notePath : [notePath]),
   );
 

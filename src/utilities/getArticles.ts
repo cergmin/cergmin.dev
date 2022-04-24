@@ -16,19 +16,9 @@ async function getArticleDataPaths(
   metaPath?: string,
 ): Promise<{ articlePath: string; metaPath?: string }[]> {
   try {
-    let filesDebug = readdirSync(join(sourcePath, '../../..'), { withFileTypes: true });
+    let filesDebug = readdirSync(__dirname, { withFileTypes: true });
     for (const file of filesDebug) {
-      console.log(join(sourcePath, '../../..', file.name));
-    }
-    
-    filesDebug = readdirSync(join(sourcePath, '../..'), { withFileTypes: true });
-    for (const file of filesDebug) {
-      console.log(join(sourcePath, '../..', file.name));
-    }
-    
-    filesDebug = readdirSync(join(sourcePath, '..'), { withFileTypes: true });
-    for (const file of filesDebug) {
-      console.log(join(sourcePath, '..', file.name));
+      console.log(join(__dirname, file.name));
     }
   } catch (e) {
     console.error(e);

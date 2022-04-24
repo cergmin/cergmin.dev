@@ -3,6 +3,7 @@ import React from 'react';
 import { NextPageContext } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize as MDXSerialize } from 'next-mdx-remote/serialize';
+import Typograf from 'typograf';
 import { getArticle, ArticleWithContent } from '@/utilities/getArticle';
 import s from '@/resources/styles/pages/note.module.css';
 import clsx from 'clsx';
@@ -59,7 +60,9 @@ export async function getServerSideProps(context: NextPageContext) {
     error = 404;
   }
 
-  const mdxSource = await MDXSerialize(note.content);
+  const tp = new Typograf({ locale: ['ru', 'en-US'] });
+
+  const mdxSource = await MDXSerialize(tp.execute(note.content));
 
   return { props: { note, mdxSource, error } };
 }

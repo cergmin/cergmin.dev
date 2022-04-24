@@ -15,6 +15,7 @@ specifiers:
   react: ^17.0.2
   react-dom: ^17.0.2
   typescript: ^4.6.3
+  typograf: ^6.14.1
 
 dependencies:
   '@babel/core': 7.17.9
@@ -25,6 +26,7 @@ dependencies:
   next-mdx-remote: 3.0.8_react-dom@17.0.2+react@17.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  typograf: 6.14.1
 
 devDependencies:
   '@types/node': 17.0.25
@@ -1792,6 +1794,11 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
+
+  /typograf/6.14.1:
+    resolution: {integrity: sha512-oMVirfP09iKI4Bk2BQKxdN00xdkyWHN+v8E4qoHxyoVOuPH7L/RI6/8fF4XBOcEPNNfEsy1yNN958Ocv6/Y0pA==}
+    engines: {node: '>= 4'}
+    dev: false
 
   /unherit/1.1.3:
     resolution: {integrity: sha512-Ft16BJcnapDKp0+J/rqFC3Rrk6Y/Ng4nzsC028k2jdDII/rdZ7Wd3pPT/6+vIIxRagwRc9K0IUX0Ra4fKvw+WQ==}

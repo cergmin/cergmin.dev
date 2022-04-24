@@ -1,15 +1,16 @@
 :root {
     --background-base: var(--white);
-    --background-faint: var(--gray-200);
+    --background-faint: var(--gray-100);
     --background-faint-dark: var(--gray-800);
     --background-header: var(--white);
-    --background-card: var(--blue-900);
+    --background-code: var(--gray-900);
 
     --text-base: var(--gray-900);
     --text-faint: var(--gray-700);
     --text-accent: var(--blue-700);
     --text-light: var(--white);
     --text-dark: var(--gray-900);
+    --text-code: var(--white);
 
     --shadow-header: var(--gray-200);
 

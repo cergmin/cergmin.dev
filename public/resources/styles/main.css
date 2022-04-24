@@ -1,6 +1,8 @@
 :root {
   --ff-headings: 'RF Tone', 'Segoe UI', sans-serif;
-  --ff-sans-serif: 'Segoe UI', 'RF Tone', 'Roboto', sans-serif;
+  --ff-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
   --ff-monospace: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
     Courier, monospace;
   --ff-serif: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua',
@@ -20,10 +22,13 @@
   --gap-s: 0.5rem;
   --gap-m: 0.75rem;
   --gap-l: 1rem;
+  --block-margin-2xs: 0.25rem;
   --block-margin-xs: 0.5rem;
   --block-margin-s: 1rem;
   --block-margin-m: 1.25rem;
   --block-margin-l: 1.5rem;
+  --block-margin-xl: 1.75rem;
+  --block-margin-2xl: 2rem;
   --radius-s: 3px;
   --radius-m: 5px;
   --radius-l: 7px;

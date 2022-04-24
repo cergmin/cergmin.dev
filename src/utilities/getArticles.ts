@@ -15,15 +15,6 @@ async function getArticleDataPaths(
   sourcePath: string,
   metaPath?: string,
 ): Promise<{ articlePath: string; metaPath?: string }[]> {
-  try {
-    let filesDebug = readdirSync(__dirname, { withFileTypes: true });
-    for (const file of filesDebug) {
-      console.log(join(__dirname, file.name));
-    }
-  } catch (e) {
-    console.error(e);
-  }
-
   if (!existsSync(sourcePath)) {
     console.error(`Folder '${sourcePath}' does not exists!`);
     return [];

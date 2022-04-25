@@ -50,7 +50,7 @@ export default NotesPage;
 
 export async function getServerSideProps() {
   const articles = await getArticles(
-    join(__dirname, '../../../src/content/notes'),
+    join(__dirname, '../../content/notes'),
   );
 
   const notes: Note[] = articles.map((article) => {

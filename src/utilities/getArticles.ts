@@ -15,6 +15,24 @@ async function getArticleDataPaths(
   sourcePath: string,
   metaPath?: string,
 ): Promise<{ articlePath: string; metaPath?: string }[]> {
+  for (let back = 0; back < 4; back++) {
+    let nPath = sourcePath;
+
+    for (let j = 0; j < back; j++) {
+      nPath = join(nPath, '..');
+    }
+
+    try {
+      const files = readdirSync(nPath, { withFileTypes: true });
+      for (const file of files) {
+        const pathToFile = join(nPath, file.name);
+        console.log(pathToFile);
+      }
+    } catch (e){
+      console.error(e.message);
+    }
+  }
+
   if (!existsSync(sourcePath)) {
     console.error(`Folder '${sourcePath}' does not exists!`);
     return [];

@@ -15,12 +15,9 @@ async function getArticleDataPaths(
   sourcePath: string,
   metaPath?: string,
 ): Promise<{ articlePath: string; metaPath?: string }[]> {
-  for (let back = 0; back < 4; back++) {
-    let nPath = sourcePath;
-
-    for (let j = 0; j < back; j++) {
-      nPath = join(nPath, '..');
-    }
+  let nPath = sourcePath;
+  for (const nAdd of ['.', '..', '..', '..', '..', 'src']) {
+    nPath = join(nAdd);
 
     try {
       const files = readdirSync(nPath, { withFileTypes: true });

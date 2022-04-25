@@ -16,7 +16,7 @@ async function getArticleDataPaths(
   metaPath?: string,
 ): Promise<{ articlePath: string; metaPath?: string }[]> {
   let nPath = sourcePath;
-  for (const nAdd of ['.', '..', '..', '..', 'src']) {
+  for (const nAdd of ['.', '..', '..', '..', '..']) {
     nPath = join(nPath, nAdd);
 
     try {

@@ -47,22 +47,31 @@ export async function getServerSideProps(context: NextPageContext) {
   let { path: notePath } = context.query;
   notePath = join(
     __dirname,
-    '../../../src/content/notes',
+    '../../../../src/content/notes',
     ...(Array.isArray(notePath) ? notePath : [notePath]),
   );
 
   let note: ArticleWithContent = null;
+  let mdxSource: MDXRemoteSerializeResult<Record<string, unknown>> = null;
   let error = null;
 
   try {
     note = await getArticle(notePath);
-  } catch {
+  } catch (e) {
+    console.log(e);
     error = 404;
   }
 
-  const tp = new Typograf({ locale: ['ru', 'en-US'] });
+  try {
+    if (!error) {
+      const tp = new Typograf({ locale: ['ru', 'en-US'] });
+      mdxSource = await MDXSerialize(tp.execute(note.content));
+    }
+  } catch(e) {
+    console.log(e);
+    error = 500;
+  }
 
-  const mdxSource = await MDXSerialize(tp.execute(note.content));
 
   return { props: { note, mdxSource, error } };
 }

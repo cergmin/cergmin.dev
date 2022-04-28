@@ -10,8 +10,8 @@ const nextConfig = {
       new CopyPlugin({
         patterns: [
           {
-            from: join(__dirname, 'src/content'),
-            to: '../content',
+            from: join(__dirname, 'content'),
+            to: '../.data/content',
           },
         ],
       }),

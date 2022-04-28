@@ -11,7 +11,7 @@ const nextConfig = {
         patterns: [
           {
             from: join(__dirname, 'src/content'),
-            to: './content',
+            to: 'content',
           },
         ],
       }),

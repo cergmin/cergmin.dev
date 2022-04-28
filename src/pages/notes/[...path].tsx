@@ -47,7 +47,7 @@ export async function getServerSideProps(context: NextPageContext) {
   let { path: notePath } = context.query;
   notePath = join(
     __dirname,
-    '../../../../.data/content/notes',
+    '../../../content/notes',
     ...(Array.isArray(notePath) ? notePath : [notePath]),
   );
 

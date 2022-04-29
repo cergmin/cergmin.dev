@@ -49,9 +49,7 @@ function NotesPage({ notes }: NotesPageProps) {
 export default NotesPage;
 
 export async function getServerSideProps() {
-  const articles = await getArticles(
-    join(__dirname, '../../content/notes'),
-  );
+  const articles = await getArticles(join(process.cwd(), 'content/notes'));
 
   const notes: Note[] = articles.map((article) => {
     let noteUrl = article.relativePath;

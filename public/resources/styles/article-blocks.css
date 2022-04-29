@@ -1,6 +1,6 @@
 .article {
   --content-font-size: var(--fs-l);
-  --content-rhythm: var(--content-font-size);
+  --content-rhythm: calc(var(--content-font-size) / 0.75);
 
   font-size: var(--content-font-size);
   overflow-wrap: break-word;
@@ -12,7 +12,8 @@
 .article h5,
 .article h6 {
   font-family: var(--ff-sans-serif);
-  margin: calc(var(--content-rhythm) / 2) 0;
+  margin-top: calc(var(--content-rhythm) * 2);
+  margin-bottom: calc(var(--content-rhythm) / 2);
   padding: 0;
   font-weight: 700;
   line-height: var(--lh-tight);
@@ -20,6 +21,8 @@
 
 .article h2 {
   font-size: 1.5em;
+  margin-top: calc(var(--content-rhythm) * 3);
+  margin-bottom: var(--content-rhythm);
 }
 
 .article h3 {
@@ -37,6 +40,18 @@
 .article h6 {
   font-size: 0.875em;
   color: var(--text-faint);
+}
+
+.article h1 + h2,
+.article h1 + h3,
+.article h1 + h4,
+.article h1 + h5,
+.article h1 + h6,
+.article h2 + h3,
+.article h3 + h4,
+.article h4 + h5,
+.article h5 + h6 {
+  margin-top: calc(var(--content-rhythm) / 2);
 }
 
 .article p {
@@ -76,20 +91,20 @@
 .article code,
 .article kbd,
 .article samp {
-    font-family: var(--ff-monospace);
-    font-size: 1em;
+  font-family: var(--ff-monospace);
+  font-size: 1em;
 }
 
 .article code {
-  padding: 0.1em 0.25em;
-  font-size: 0.8em;
+  padding: 0.125em 0.25em;
+  font-size: calc(1em / 1.125);
   border-radius: var(--radius-s);
   background: var(--background-faint);
 }
 
 .article pre {
   margin-bottom: var(--content-rhythm);
-  padding: var(--block-margin-l);
+  padding: var(--content-rhythm);
   border-radius: var(--radius-m);
   background: var(--background-code);
   color: var(--text-code);

@@ -1,5 +1,5 @@
 :root {
-  --ff-headings: 'RF Tone', 'Segoe UI', sans-serif;
+  --ff-headings: 'RF Tone', 'Segoe UI', Helvetica, sans-serif;
   --ff-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
@@ -38,6 +38,7 @@ body {
   background-color: var(--background-base);
   color: var(--text-base);
   font-family: var(--ff-sans-serif, sans-serif);
+  overflow-y: scroll;
 }
 
 .wrapper {
@@ -53,7 +54,7 @@ body {
 }
 
 .pageTitle {
-  margin-bottom: var(--block-margin-s);
+  margin-bottom: var(--block-margin-m);
   font-size: var(--fs-5xl);
   font-weight: 900;
   font-family: var(--ff-headings);

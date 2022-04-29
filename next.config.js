@@ -5,20 +5,20 @@ const CopyPlugin = require('copy-webpack-plugin');
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    config.plugins.push(
-      new CopyPlugin({
-        patterns: [
-          {
-            from: join(__dirname, 'content'),
-            to: join(__dirname, `.next/content`),
-          },
-        ],
-      }),
-    );
+  // webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+  //   config.plugins.push(
+  //     new CopyPlugin({
+  //       patterns: [
+  //         {
+  //           from: join(__dirname, 'content'),
+  //           to: join(__dirname, `.next/content`),
+  //         },
+  //       ],
+  //     }),
+  //   );
 
-    return config;
-  },
+  //   return config;
+  // },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
 };
 

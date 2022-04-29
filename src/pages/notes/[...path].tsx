@@ -46,8 +46,8 @@ export default NotePage;
 export async function getServerSideProps(context: NextPageContext) {
   let { path: notePath } = context.query;
   notePath = join(
-    __dirname,
-    '../../../content/notes',
+    process.cwd(),
+    'content/notes',
     ...(Array.isArray(notePath) ? notePath : [notePath]),
   );
 
@@ -67,11 +67,10 @@ export async function getServerSideProps(context: NextPageContext) {
       const tp = new Typograf({ locale: ['ru', 'en-US'] });
       mdxSource = await MDXSerialize(tp.execute(note.content));
     }
-  } catch(e) {
+  } catch (e) {
     console.log(e);
     error = 500;
   }
-
 
   return { props: { note, mdxSource, error } };
 }

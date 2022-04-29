@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "src/pages/notes.tsx": {
+      "includeFiles": "content/**"
+    },
+    "src/pages/notes/[...path].tsx": {
+      "includeFiles": "content/**"
+    }
+  }
+}

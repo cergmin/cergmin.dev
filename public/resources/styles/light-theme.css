@@ -1,21 +1,25 @@
 :root {
-    --background-base: var(--white);
+    --background-base: #fff;
     --background-faint: #f6f6f6;
-    --background-faint-dark: var(--gray-800);
-    --background-header: var(--white);
-    --background-code: var(--gray-900);
+    --background-header: #fff;
+    --background-code: hsl(220deg 5% 12%);
+
+    --background-note-card-default: var(--background-faint);
+    --background-note-card-green: linear-gradient(320deg, #0d8d51, #205430);
+    --background-note-card-blue: linear-gradient(320deg, #15266D, #52b2ea);
+    --background-note-card-dark-blue: linear-gradient(320deg, #1c1d5a, #0e0a26);
 
     --text-base: var(--gray-900);
     --text-faint: var(--gray-700);
     --text-accent: var(--blue-700);
-    --text-light: var(--white);
-    --text-dark: var(--gray-900);
-    --text-code: var(--white);
+    --text-code: #fff;
+
+    --text-note-card-default: var(--text-base);
+    --text-note-card-green: #fff;
+    --text-note-card-blue: #fff;
+    --text-note-card-dark-blue: #fff;
 
     --border-base: hsl(216deg 10% 10% / 18%);
-
-    --light-theme: 1;
-    --dark-theme: 0;
 
     color-scheme: light;
 }

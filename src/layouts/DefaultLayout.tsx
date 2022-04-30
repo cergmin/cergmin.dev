@@ -17,7 +17,6 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Notes" />
         <meta name="robots" content="index, follow" />
-        <meta name="color-scheme" content="light" />
         <link rel="manifest" href="/manifest.webmanifest" />
         <title>Sergey Minakov</title>
 
@@ -34,6 +33,17 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
           rel="icon"
           href="/resources/images/favicons/favicon.svg"
           type="image/svg+xml"
+        />
+
+        <link
+          href="/resources/styles/light-theme.css"
+          rel="stylesheet"
+          media="(prefers-color-scheme: light)"
+        />
+        <link
+          href="/resources/styles/dark-theme.css"
+          rel="stylesheet"
+          media="(prefers-color-scheme: dark)"
         />
       </Head>
       <Header />

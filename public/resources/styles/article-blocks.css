@@ -109,6 +109,8 @@
   background: var(--background-code);
   color: var(--text-code);
   overflow-x: auto;
+  outline: 1px solid var(--border-base);
+  outline-offset: -1px;
 }
 
 .article pre code {

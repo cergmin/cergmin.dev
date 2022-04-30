@@ -1,23 +1,24 @@
 .card {
-  background: var(--background-faint);
+  color: var(--text-note-card-default);
+  background: var(--background-note-card-default);
   border-radius: var(--radius-l);
   outline: 1px solid var(--border-base);
   outline-offset: -1px;
 }
 
 .card[data-appearance='green'] {
-  color: #fff;
-  background: linear-gradient(320deg, #0d8d51, #205430);
+  color: var(--text-note-card-green);
+  background: var(--background-note-card-green);
 }
 
 .card[data-appearance='blue'] {
-  color: #fff;
-  background: linear-gradient(320deg, #15266D, #52b2ea);
+  color: var(--text-note-card-blue);
+  background: var(--background-note-card-blue);
 }
 
 .card[data-appearance='darkBlue'] {
-  color: #fff;
-  background: linear-gradient(320deg, #1c1d5a, #0e0a26);
+  color: var(--text-note-card-dark-blue);
+  background: var(--background-note-card-dark-blue);
 }
 
 .cardLink {

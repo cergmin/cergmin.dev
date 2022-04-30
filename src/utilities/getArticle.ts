@@ -1,12 +1,9 @@
 import { existsSync, readFileSync } from 'fs';
 import { join, relative, dirname, basename } from 'path';
 import matter from 'gray-matter';
+import { Article } from '@/utilities/getArticles';
 
-export interface ArticleWithContent {
-  path: string;
-  relativePath: string;
-  title: string;
-  description: string;
+export interface ArticleWithContent extends Article {
   content: string;
 }
 
@@ -25,13 +22,14 @@ export async function getArticle(
 
   const articleFileContent = readFileSync(pathToIndex, 'utf8');
 
-  const { content, data: grayMatter } = matter(articleFileContent);
+  const { content, data: frontMatter } = matter(articleFileContent);
 
   return {
     path: pathToIndex,
     relativePath: relative(sourcePath, pathToIndex),
-    title: grayMatter.title ?? basename(dirname(pathToIndex)),
-    description: grayMatter.description ?? null,
+    title: frontMatter.title ?? basename(dirname(pathToIndex)),
+    description: frontMatter.description ?? null,
+    frontMatter: frontMatter,
     content: content,
   };
 }

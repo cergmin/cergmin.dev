@@ -1,4 +1,5 @@
 .layout {
   width: 100%;
-  padding-top: 1rem;
+  padding-top: var(--block-margin-m);
+  padding-bottom: var(--block-margin-2xl);
 }

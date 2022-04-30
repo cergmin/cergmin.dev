@@ -1,37 +1,32 @@
+import { CSSProperties } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import s from './NoteCard.module.css';
 
 interface NoteCardProps {
   className?: string;
+  style?: CSSProperties;
   title: string;
   description?: string;
   url: string;
-  background?: string;
-  widthInCells?: number;
-  heightInCells?: number;
+  appearance?: string;
 }
 
 const NoteCard = ({
   className,
+  style,
   title,
   description,
   url,
-  background,
-  widthInCells,
-  heightInCells,
+  appearance,
 }: NoteCardProps) => {
-  widthInCells ??= 1;
-  heightInCells ??= 1;
+  appearance = appearance ?? 'default';
 
   return (
     <article
       className={clsx(s.card, className)}
-      style={{
-        background: background,
-        gridColumn: `span ${widthInCells}`,
-        gridRow: `span ${heightInCells}`,
-      }}>
+      style={style}
+      data-appearance={appearance}>
       <Link href={url}>
         <a className={s.cardLink}>
           <div className={s.cardLayout}>

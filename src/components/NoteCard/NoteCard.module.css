@@ -1,13 +1,37 @@
 .card {
-  background: var(--background-faint-dark);
+  background: var(--background-faint);
   border-radius: var(--radius-l);
+  outline: 1px solid var(--border-base);
+  outline-offset: -1px;
+}
+
+.card[data-appearance='green'] {
+  color: #fff;
+  background: linear-gradient(320deg, #0d8d51, #205430);
+}
+
+.card[data-appearance='blue'] {
+  color: #fff;
+  background: linear-gradient(320deg, #15266D, #52b2ea);
+}
+
+.card[data-appearance='darkBlue'] {
+  color: #fff;
+  background: linear-gradient(320deg, #1c1d5a, #0e0a26);
 }
 
 .cardLink {
+  color: inherit;
   width: 100%;
   height: 100%;
   display: block;
   text-decoration: none;
+  border-radius: var(--radius-l);
+}
+
+.cardLink:focus-visible {
+  outline: 2px solid var(--text-base);
+  outline-offset: 0;
 }
 
 .cardLayout {
@@ -18,17 +42,16 @@
   height: 100%;
   min-height: 5rem;
   padding: 1rem 1.5rem;
+  overflow: hidden;
 }
 
 .cardTitle {
-  color: var(--text-light);
   font-size: var(--fs-xl);
   line-height: var(--lh-tight);
   font-weight: 600;
 }
 
 .cardDescription {
-  color: var(--text-light);
   opacity: 0.8;
   font-size: var(--fs-s);
   line-height: var(--lh-base);

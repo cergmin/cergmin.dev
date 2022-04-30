@@ -1,6 +1,7 @@
 .layout {
   width: 100%;
-  padding-top: 1rem;
+  padding-top: var(--block-margin-m);
+  padding-bottom: var(--block-margin-2xl);
 }
 
 .notes {
@@ -9,9 +10,14 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: auto;
   grid-auto-flow: dense;
-  gap: var(--gap-l);
+  gap: var(--gap-xl);
 }
 
 .note {
   height: 100%;
+  grid-row: span 2;
+}
+
+.note:nth-child(2) {
+  grid-row: span 1;
 }

@@ -22,6 +22,7 @@
   --gap-s: 0.5rem;
   --gap-m: 0.75rem;
   --gap-l: 1rem;
+  --gap-xl: 1.25rem;
   --block-margin-2xs: 0.25rem;
   --block-margin-xs: 0.5rem;
   --block-margin-s: 1rem;
@@ -43,7 +44,7 @@ body {
 
 .wrapper {
   --wrapper-max-width: 1000px;
-  --wrapper-padding: clamp(24px, 3.2vw, 32px);
+  --wrapper-padding: clamp(16px, 3.2vw, 32px);
 
   width: 100%;
   max-width: calc(var(--wrapper-max-width) + 2 * var(--wrapper-padding));

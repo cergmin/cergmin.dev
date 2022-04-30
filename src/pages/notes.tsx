@@ -1,14 +1,12 @@
-import React from 'react';
 import { join, dirname } from 'path';
-import { getArticles } from '@/utilities/getArticles';
+import React, { CSSProperties } from 'react';
+import Typograf from 'typograf';
+import { Article, getArticles } from '@/utilities/getArticles';
 import NoteCard from '@/components/NoteCard';
 import s from '@/resources/styles/pages/notes.module.css';
 
-interface Note {
+interface Note extends Article {
   url: string;
-  title: string;
-  description?: string;
-  background?: string;
 }
 
 interface NotesPageProps {
@@ -22,10 +20,7 @@ function NotesPage({ notes }: NotesPageProps) {
         <div className={s.layout}>
           <h1 className="pageTitle">Конспекты</h1>
           <div className={s.notes}>
-            {notes.map((note, i) => {
-              const widthInCells = i % 11 == 6 ? 2 : 1;
-              const heightInCells = i % 9 == 2 ? 2 : 1;
-
+            {notes.map((note) => {
               return (
                 <NoteCard
                   className={s.note}
@@ -33,9 +28,7 @@ function NotesPage({ notes }: NotesPageProps) {
                   title={note.title}
                   description={note.description}
                   url={note.url}
-                  background={note.background}
-                  widthInCells={widthInCells}
-                  heightInCells={heightInCells}
+                  appearance={note.metaData.cardAppearance}
                 />
               );
             })}
@@ -49,18 +42,23 @@ function NotesPage({ notes }: NotesPageProps) {
 export default NotesPage;
 
 export async function getServerSideProps() {
+  const tp = new Typograf({ locale: ['ru', 'en-US'] });
   const articles = await getArticles(join(process.cwd(), 'content/notes'));
 
   const notes: Note[] = articles.map((article) => {
     let noteUrl = article.relativePath;
-    noteUrl = join('notes', noteUrl);
+    noteUrl = join('/notes', noteUrl);
     noteUrl = dirname(noteUrl);
+    noteUrl = noteUrl.replaceAll('\\', '/');
+    noteUrl = noteUrl.replaceAll('//', '/');
+
+    if (article.description) {
+      article.description = tp.execute(article.description);
+    }
 
     return {
+      ...article,
       url: noteUrl,
-      title: article.title,
-      description: article.description,
-      background: article.background,
     };
   });
 

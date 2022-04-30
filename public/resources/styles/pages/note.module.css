@@ -1,7 +1,7 @@
 .layout {
   width: 100%;
-  padding: 1rem 0;
-  min-height: calc(100vh - 3.5rem);
+  padding-top: var(--block-margin-m);
+  padding-bottom: var(--block-margin-2xl);
 }
 
 .note {

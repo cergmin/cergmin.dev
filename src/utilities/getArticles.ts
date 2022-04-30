@@ -8,7 +8,15 @@ export interface Article {
   relativePath: string;
   title: string;
   description?: string;
-  background?: string;
+  frontMatter: {
+    title?: string;
+    description?: string;
+    [key: string]: any;
+  };
+  metaData: {
+    cardAppearance?: string;
+    [key: string]: any;
+  };
 }
 
 async function getArticleDataPaths(
@@ -92,7 +100,8 @@ export async function getArticles(sourcePath: string): Promise<Article[]> {
         relativePath: relative(sourcePath, articlePath),
         title: frontMatter.title ?? basename(dirname(articlePath)),
         description: frontMatter.description ?? null,
-        background: metaData.background ?? null,
+        frontMatter: frontMatter,
+        metaData: metaData || {},
       };
 
       return articleData;

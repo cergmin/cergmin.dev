@@ -6,7 +6,6 @@ import { normalizeSlug } from '@/utilities/normalizeSlug';
 export const CONTENT_FOLDER_PATH = join(process.cwd(), 'content');
 
 export interface ArticleMetaData {
-  cardAppearance?: string;
   [key: string]: any;
 }
 

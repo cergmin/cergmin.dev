@@ -3,21 +3,16 @@
   --background-faint: hsl(220deg 5% 12%);
   --background-header: var(--background-faint);
   --background-code: var(--background-faint);
+  --background-note-card: var(--background-faint);
 
-  --background-note-card-default: var(--background-faint);
-  --background-note-card-green: var(--background-faint);
-  --background-note-card-blue: var(--background-faint);
-  --background-note-card-dark-blue: var(--background-faint);
+  --background-switcher: hsl(220deg 5% 6%);
+  --background-switcher-button: hsl(220deg 5% 18%);
 
   --text-base: #fff;
   --text-faint: hsl(220deg 4% 80%);
   --text-accent: hsl(215deg 100% 60%);
   --text-code: var(--white);
-
-  --text-note-card-default: var(--text-base);
-  --text-note-card-green: var(--text-base);
-  --text-note-card-blue: var(--text-base);
-  --text-note-card-dark-blue: var(--text-base);
+  --text-note-card: var(--text-base);
 
   --border-base: hsl(0deg 0% 100% / 5%);
 

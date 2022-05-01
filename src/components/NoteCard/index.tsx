@@ -9,7 +9,6 @@ interface NoteCardProps {
   title: string;
   description?: string;
   url: string;
-  appearance?: string;
 }
 
 const NoteCard = ({
@@ -18,15 +17,9 @@ const NoteCard = ({
   title,
   description,
   url,
-  appearance,
 }: NoteCardProps) => {
-  appearance = appearance ?? 'default';
-
   return (
-    <article
-      className={clsx(s.card, className)}
-      style={style}
-      data-appearance={appearance}>
+    <article className={clsx(s.card, className)} style={style}>
       <Link href={url}>
         <a className={s.cardLink}>
           <div className={s.cardLayout}>

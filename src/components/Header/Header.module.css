@@ -10,10 +10,17 @@
   height: 3.5rem;
   background-color: var(--background-header);
   box-shadow: 0 1px 0 0 var(--border-base);
+  overflow-x: auto;
+}
+
+.header::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .headerLayout,
 .headerNav,
+.headerPreferences,
 .headerNavList,
 .headerNavListItem,
 .headerNavListLink {
@@ -22,6 +29,8 @@
 
 .headerLayout {
   display: flex;
+  justify-content: space-between;
+  gap: var(--block-margin-l);
 }
 
 .headerNavList {
@@ -45,4 +54,9 @@
 .headerNavListLink:hover,
 .headerNavListLink:focus {
   color: var(--text-accent);
+}
+
+.headerPreferences {
+  display: flex;
+  align-items: center;
 }

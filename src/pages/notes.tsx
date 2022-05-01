@@ -7,7 +7,6 @@ interface NoteCardData {
   slug: string;
   title: string;
   description: string;
-  appearance: string;
 }
 
 interface NotesPageProps {
@@ -29,7 +28,6 @@ function NotesPage({ noteCardsData }: NotesPageProps) {
                   title={data.title}
                   description={data.description}
                   url={data.slug}
-                  appearance={data.appearance}
                 />
               );
             })}
@@ -50,7 +48,6 @@ export async function getStaticProps() {
     slug: article.slug,
     title: article.title,
     description: article.description ? tp.execute(article.description) : null,
-    appearance: article.metaData.cardAppearance || null,
   }));
 
   return { props: { noteCardsData } };

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 import s from './Header.module.css';
 
 const Header = () => {
@@ -40,6 +41,9 @@ const Header = () => {
                 })}
               </ul>
             </nav>
+            <div className={s.headerPreferences}>
+              <ThemeSwitcher className={s.headerThemeSwitcher} />
+            </div>
           </div>
         </div>
       </header>

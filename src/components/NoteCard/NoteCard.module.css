@@ -1,24 +1,9 @@
 .card {
-  background: var(--background-note-card-default);
+  background: var(--background-note-card);
   border-radius: var(--radius-l);
-  color: var(--text-note-card-default);
+  color: var(--text-note-card);
   outline: 1px solid var(--border-base);
   outline-offset: -1px;
-}
-
-.card[data-appearance='green'] {
-  background: var(--background-note-card-green);
-  color: var(--text-note-card-green);
-}
-
-.card[data-appearance='blue'] {
-  background: var(--background-note-card-blue);
-  color: var(--text-note-card-blue);
-}
-
-.card[data-appearance='darkBlue'] {
-  background: var(--background-note-card-dark-blue);
-  color: var(--text-note-card-dark-blue);
 }
 
 .cardLink {

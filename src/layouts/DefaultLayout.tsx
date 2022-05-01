@@ -31,17 +31,6 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
           href="/resources/images/favicons/favicon.svg"
           type="image/svg+xml"
         />
-
-        <link
-          href="/resources/styles/light-theme.css"
-          rel="stylesheet"
-          media="(prefers-color-scheme: light)"
-        />
-        <link
-          href="/resources/styles/dark-theme.css"
-          rel="stylesheet"
-          media="(prefers-color-scheme: dark)"
-        />
       </Head>
       <Header />
       {children}

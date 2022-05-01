@@ -1,7 +1,0 @@
-@font-face {
-  font-family: 'RF Tone';
-  font-style: normal;
-  font-weight: 900;
-  src: local('RF Tone Black'), local('RFTone-Black'),
-    url('/resources/fonts/RFTone/RFTone-Black.woff2') format('woff2');
-}

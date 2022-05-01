@@ -1,5 +1,4 @@
 :root {
-  --ff-headings: 'RF Tone', 'Segoe UI', Helvetica, sans-serif;
   --ff-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
@@ -56,7 +55,7 @@ body {
 
 .pageTitle {
   margin-bottom: var(--block-margin-m);
-  font-family: var(--ff-headings);
+  font-family: var(--ff-sans-serif);
   font-size: var(--fs-5xl);
   font-weight: 900;
   line-height: var(--lh-tight);

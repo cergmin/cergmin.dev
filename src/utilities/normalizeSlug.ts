@@ -1,10 +1,9 @@
-import { normalize, join } from "path";
+import { normalize, join } from 'path';
 
 export function normalizeSlug(slug: string) {
-    slug = normalize(slug);
-    slug = join('/', slug);
-    slug = slug.replaceAll('\\', '/');
-    slug = slug.replaceAll('//', '/');
+  slug = normalize(slug);
+  slug = join('/', slug);
+  slug = slug.replace(/\\+/g, '/');
 
-    return slug;
+  return slug;
 }

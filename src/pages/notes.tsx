@@ -36,7 +36,7 @@ function NotesPage({ notes }: NotesPageProps) {
 
 export default NotesPage;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const tp = new Typograf({ locale: ['ru', 'en-US'] });
   const articles = await getArticles('/notes');
 

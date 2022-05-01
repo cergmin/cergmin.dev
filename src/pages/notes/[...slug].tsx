@@ -1,9 +1,9 @@
 import { join } from 'path';
-import { NextPageContext } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize as MDXSerialize } from 'next-mdx-remote/serialize';
 import Typograf from 'typograf';
 import { getArticle, Article } from '@/utilities/getArticle';
+import { getArticles } from '@/utilities/getArticles';
 import s from '@/resources/styles/pages/note.module.css';
 import clsx from 'clsx';
 
@@ -31,7 +31,7 @@ function NotePage({ note, mdxSource, error }: NotePageProps) {
       <div className="wrapper">
         <div className={s.layout}>
           <article className={clsx(s.note, 'article')}>
-            <h1 className="pageTitle">{note.title}</h1>
+            <h1 className="pageTitle">{note?.title}</h1>
             <MDXRemote {...mdxSource} />
           </article>
         </div>
@@ -42,8 +42,8 @@ function NotePage({ note, mdxSource, error }: NotePageProps) {
 
 export default NotePage;
 
-export async function getServerSideProps(context: NextPageContext) {
-  let { slug } = context.query;
+export async function getStaticProps(context) {
+  let { slug } = context.params;
   slug = join('notes', ...(Array.isArray(slug) ? slug : [slug]));
 
   let note: Article = null;
@@ -68,4 +68,16 @@ export async function getServerSideProps(context: NextPageContext) {
   }
 
   return { props: { note, mdxSource, error } };
+}
+
+export async function getStaticPaths() {
+  const articles = await getArticles('/notes');
+  const paths = articles.map((article) => ({
+    params: { slug: article.slug.split('/').slice(2) },
+  }));
+
+  return {
+    paths: paths,
+    fallback: false,
+  };
 }

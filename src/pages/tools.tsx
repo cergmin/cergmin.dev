@@ -1,4 +1,3 @@
-import React from 'react';
 import s from '@/resources/styles/pages/tools.module.css';
 
 function ToolsPage() {

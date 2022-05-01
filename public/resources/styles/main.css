@@ -56,9 +56,9 @@ body {
 
 .pageTitle {
   margin-bottom: var(--block-margin-m);
+  font-family: var(--ff-headings);
   font-size: var(--fs-5xl);
   font-weight: 900;
-  font-family: var(--ff-headings);
   line-height: var(--lh-tight);
 }
 

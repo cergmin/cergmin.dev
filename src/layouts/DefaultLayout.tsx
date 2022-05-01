@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Header from '@/components/Header';
 
@@ -8,8 +7,6 @@ export interface DefaultLayoutProps {
 }
 
 function DefaultLayout({ children }: DefaultLayoutProps) {
-  const router = useRouter();
-
   return (
     <>
       <Head>

@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from 'fs';
-import { join, normalize } from 'path';
+import { join } from 'path';
 import matter from 'gray-matter';
 import { normalizeSlug } from '@/utilities/normalizeSlug';
 
@@ -40,7 +40,7 @@ export async function getArticleMetaData(
   if (existsSync(possibleMetaPath)) {
     metaData = JSON.parse(readFileSync(possibleMetaPath, 'utf8'));
   }
-  
+
   const upperSlug = join('/', articleSlug, '..');
   if (normalizeSlug(articleSlug) === normalizeSlug(upperSlug)) {
     return metaData;
@@ -54,7 +54,7 @@ export async function getArticleMetaData(
 
 export async function getArticle(articleSlug: string): Promise<Article> {
   articleSlug = normalizeSlug(articleSlug);
-  
+
   const fullPath = join(CONTENT_FOLDER_PATH, articleSlug);
   if (!existsSync(fullPath)) {
     throw Error(`Folder '${fullPath}' does not exists!`);

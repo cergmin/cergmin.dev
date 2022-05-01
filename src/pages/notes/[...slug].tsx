@@ -1,5 +1,4 @@
 import { join } from 'path';
-import React from 'react';
 import { NextPageContext } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize as MDXSerialize } from 'next-mdx-remote/serialize';

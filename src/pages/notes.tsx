@@ -1,5 +1,3 @@
-import { join, dirname } from 'path';
-import React from 'react';
 import Typograf from 'typograf';
 import { Article } from '@/utilities/getArticle';
 import { getArticles } from '@/utilities/getArticles';

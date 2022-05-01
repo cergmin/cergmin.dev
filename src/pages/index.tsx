@@ -1,4 +1,3 @@
-import React from 'react';
 import s from '@/resources/styles/pages/home.module.css';
 
 function HomePage() {

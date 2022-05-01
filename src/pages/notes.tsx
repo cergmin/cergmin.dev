@@ -1,16 +1,13 @@
 import { join, dirname } from 'path';
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import Typograf from 'typograf';
-import { Article, getArticles } from '@/utilities/getArticles';
+import { Article } from '@/utilities/getArticle';
+import { getArticles } from '@/utilities/getArticles';
 import NoteCard from '@/components/NoteCard';
 import s from '@/resources/styles/pages/notes.module.css';
 
-interface Note extends Article {
-  url: string;
-}
-
 interface NotesPageProps {
-  notes: Note[];
+  notes: Article[];
 }
 
 function NotesPage({ notes }: NotesPageProps) {
@@ -24,10 +21,10 @@ function NotesPage({ notes }: NotesPageProps) {
               return (
                 <NoteCard
                   className={s.note}
-                  key={note.url}
+                  key={note.slug}
                   title={note.title}
                   description={note.description}
-                  url={note.url}
+                  url={note.slug}
                   appearance={note.metaData.cardAppearance}
                 />
               );
@@ -43,23 +40,14 @@ export default NotesPage;
 
 export async function getServerSideProps() {
   const tp = new Typograf({ locale: ['ru', 'en-US'] });
-  const articles = await getArticles(join(process.cwd(), 'content/notes'));
+  const articles = await getArticles('/notes');
 
-  const notes: Note[] = articles.map((article) => {
-    let noteUrl = article.relativePath;
-    noteUrl = join('/notes', noteUrl);
-    noteUrl = dirname(noteUrl);
-    noteUrl = noteUrl.replaceAll('\\', '/');
-    noteUrl = noteUrl.replaceAll('//', '/');
-
+  const notes: Article[] = articles.map((article) => {
     if (article.description) {
       article.description = tp.execute(article.description);
     }
 
-    return {
-      ...article,
-      url: noteUrl,
-    };
+    return article;
   });
 
   return { props: { notes } };

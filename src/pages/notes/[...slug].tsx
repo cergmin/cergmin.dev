@@ -4,12 +4,12 @@ import { NextPageContext } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize as MDXSerialize } from 'next-mdx-remote/serialize';
 import Typograf from 'typograf';
-import { getArticle, ArticleWithContent } from '@/utilities/getArticle';
+import { getArticle, Article } from '@/utilities/getArticle';
 import s from '@/resources/styles/pages/note.module.css';
 import clsx from 'clsx';
 
 interface NotePageProps {
-  note: ArticleWithContent;
+  note: Article;
   mdxSource: MDXRemoteSerializeResult;
   error: number;
 }
@@ -44,19 +44,15 @@ function NotePage({ note, mdxSource, error }: NotePageProps) {
 export default NotePage;
 
 export async function getServerSideProps(context: NextPageContext) {
-  let { path: notePath } = context.query;
-  notePath = join(
-    process.cwd(),
-    'content/notes',
-    ...(Array.isArray(notePath) ? notePath : [notePath]),
-  );
+  let { slug } = context.query;
+  slug = join('notes', ...(Array.isArray(slug) ? slug : [slug]));
 
-  let note: ArticleWithContent = null;
+  let note: Article = null;
   let mdxSource: MDXRemoteSerializeResult<Record<string, unknown>> = null;
   let error = null;
 
   try {
-    note = await getArticle(notePath);
+    note = await getArticle(slug);
   } catch (e) {
     console.log(e);
     error = 404;

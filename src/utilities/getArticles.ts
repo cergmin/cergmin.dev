@@ -1,112 +1,41 @@
 import { existsSync, readdirSync } from 'fs';
-import { readFile } from 'fs/promises';
-import { basename, dirname, join, relative } from 'path';
-import matter from 'gray-matter';
+import { join, relative } from 'path';
+import {
+  Article,
+  getArticle,
+  CONTENT_FOLDER_PATH,
+} from '@/utilities/getArticle';
+import { normalizeSlug } from '@/utilities/normalizeSlug';
 
-export interface Article {
-  path: string;
-  relativePath: string;
-  title: string;
-  description?: string;
-  frontMatter: {
-    title?: string;
-    description?: string;
-    [key: string]: any;
-  };
-  metaData: {
-    cardAppearance?: string;
-    [key: string]: any;
-  };
-}
+async function getArticleSlugs(rootSlug: string): Promise<string[]> {
+  rootSlug = normalizeSlug(rootSlug);
+  const folderPath = join(CONTENT_FOLDER_PATH, rootSlug);
 
-async function getArticleDataPaths(
-  sourcePath: string,
-  metaPath?: string,
-): Promise<{ articlePath: string; metaPath?: string }[]> {
-  if (!existsSync(sourcePath)) {
-    console.error(`Folder '${sourcePath}' does not exists!`);
+  if (!existsSync(folderPath)) {
+    console.error(`Folder '${folderPath}' does not exists!`);
     return [];
   }
 
-  const possibleMetaPath = join(sourcePath, 'meta.json');
-  if (existsSync(possibleMetaPath)) {
-    metaPath = possibleMetaPath;
-  }
-
-  const possibleIndexPath = join(sourcePath, 'index.mdx');
+  const possibleIndexPath = join(folderPath, 'index.mdx');
   if (existsSync(possibleIndexPath)) {
-    return [{ articlePath: possibleIndexPath, metaPath: metaPath }];
+    return [rootSlug];
   }
 
-  const files = readdirSync(sourcePath, { withFileTypes: true });
-  const folders: string[] = [];
+  const subSlugs: string[] = [];
+  const files = readdirSync(folderPath, { withFileTypes: true });
   for (const file of files) {
-    const pathToFile = join(sourcePath, file.name);
-
     if (file.isDirectory()) {
-      folders.push(pathToFile);
+      subSlugs.push(join(rootSlug, file.name));
     }
   }
 
-  const articles = await Promise.all(
-    folders.map((folderPath) => getArticleDataPaths(folderPath, metaPath)),
-  );
-
+  const articles = await Promise.all(subSlugs.map(getArticleSlugs));
   return articles.flat();
 }
 
-export async function getArticles(sourcePath: string): Promise<Article[]> {
-  const articleDataPaths = await getArticleDataPaths(sourcePath);
+export async function getArticles(rootSlug: string): Promise<Article[]> {
+  rootSlug = normalizeSlug(rootSlug);
+  const articleSlugs = await getArticleSlugs(rootSlug);
 
-  const articleDataPromises: Promise<{
-    articlePath: string;
-    articleContent: string;
-    metaContent: string;
-  }>[] = [];
-
-  for (const articleDataPath of articleDataPaths) {
-    const { articlePath, metaPath } = articleDataPath;
-
-    const articleContentPromise = readFile(articlePath, 'utf8');
-    const metaContentPromise = metaPath
-      ? readFile(metaPath, 'utf8')
-      : Promise.resolve(null);
-
-    const articleArrayDataPromise = Promise.all([
-      articlePath,
-      articleContentPromise,
-      metaContentPromise,
-    ]);
-    const articleDataPromise = articleArrayDataPromise.then(
-      ([articlePath, articleContent, metaContent]) => ({
-        articlePath,
-        articleContent,
-        metaContent,
-      }),
-    );
-
-    articleDataPromises.push(articleDataPromise);
-  }
-
-  const articleData = await Promise.all(articleDataPromises);
-
-  const articles = articleData.map(
-    ({ articlePath, articleContent, metaContent }) => {
-      const metaData = JSON.parse(metaContent);
-      const { data: frontMatter } = matter(articleContent);
-
-      const articleData: Article = {
-        path: articlePath,
-        relativePath: relative(sourcePath, articlePath),
-        title: frontMatter.title ?? basename(dirname(articlePath)),
-        description: frontMatter.description ?? null,
-        frontMatter: frontMatter,
-        metaData: metaData || {},
-      };
-
-      return articleData;
-    },
-  );
-
-  return articles;
+  return Promise.all(articleSlugs.map(getArticle));
 }

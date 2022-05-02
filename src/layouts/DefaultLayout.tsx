@@ -31,6 +31,13 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
           href="/resources/images/favicons/favicon.svg"
           type="image/svg+xml"
         />
+
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+          integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB"
+          crossOrigin="anonymous"
+        />
       </Head>
       <Header />
       {children}

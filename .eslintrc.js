@@ -42,6 +42,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-use-before-define': ['error'],
+    '@typescript-eslint/ban-ts-comment': ['warn'],
   },
   overrides: [
     {

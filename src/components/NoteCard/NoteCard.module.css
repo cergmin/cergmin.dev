@@ -1,10 +1,39 @@
 .card {
-  background: var(--background-note-card);
-  border-radius: var(--radius-l);
+  --border-width: 4px;
+
+  padding: var(--border-width);
+  background-color: #de4d7b;
+  background-image: url('/resources/images/border_background.png');
+  background-position-x: 100%;
+  background-position-y: 13%;
+  background-size: auto;
+  border-radius: var(--radius-xl);
   color: var(--text-note-card);
-  outline: 1px solid var(--border-base);
-  outline-offset: -1px;
   transition: var(--theme-transtion);
+}
+
+.card:nth-child(5n + 1) {
+  background-color: #6296ce;
+  background-position-x: 75%;
+  background-position-y: 75%;
+}
+
+.card:nth-child(5n + 2) {
+  background-color: #8f10f4;
+  background-position-x: 0%;
+  background-position-y: 25%;
+}
+
+.card:nth-child(5n + 3) {
+  background-color: #9457c6;
+  background-position-x: 95%;
+  background-position-y: 31%;
+}
+
+.card:nth-child(5n + 4) {
+  background-color: #6296ce;
+  background-position-x: 5%;
+  background-position-y: 70%;
 }
 
 .cardLink {
@@ -17,8 +46,8 @@
 }
 
 .cardLink:focus-visible {
-  outline: 2px solid var(--text-base);
-  outline-offset: 0;
+  outline: var(--border-width) dashed var(--text-base);
+  outline-offset: calc(-1 * var(--border-width));
 }
 
 .cardLayout {
@@ -29,6 +58,8 @@
   min-height: 5rem;
   flex-direction: column;
   padding: 1rem 1.5rem;
+  background: var(--background-note-card);
+  border-radius: var(--radius-l);
   row-gap: var(--gap-s);
 }
 
@@ -47,4 +78,10 @@
   -webkit-line-clamp: 3;
   line-height: var(--lh-base);
   opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .card {
+    --border-width: 3px;
+  }
 }

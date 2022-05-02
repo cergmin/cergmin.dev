@@ -32,6 +32,7 @@
   --radius-s: 3px;
   --radius-m: 5px;
   --radius-l: 7px;
+  --radius-xl: 10px;
 
   --theme-transition-time: 0.15s;
   --theme-transtion: var(--theme-transition-time) ease-out background;

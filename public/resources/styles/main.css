@@ -32,6 +32,9 @@
   --radius-s: 3px;
   --radius-m: 5px;
   --radius-l: 7px;
+
+  --theme-transition-time: 0.15s;
+  --theme-transtion: var(--theme-transition-time) ease-out background;
 }
 
 body {
@@ -39,6 +42,7 @@ body {
   color: var(--text-base);
   font-family: var(--ff-sans-serif, sans-serif);
   overflow-y: scroll;
+  transition: var(--theme-transtion);
 }
 
 .wrapper {

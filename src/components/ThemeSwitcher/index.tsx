@@ -44,7 +44,10 @@ const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
       {themeOptions.map((option) => (
         <label
           key={`${option.value}_color_theme_label`}
-          className={s.switcherButton}
+          className={clsx(
+            s.switcherButton,
+            option.value === selectedTheme && s.switcherButtonSelected,
+          )}
           htmlFor={`${option.value}_color_theme_radio`}>
           <span className={s.switcherButtonText}>{option.label}</span>
         </label>
@@ -67,7 +70,15 @@ const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
         className={s.switcherStatus}
         style={{
           display: selectedThemeIndex === -1 ? 'none' : 'block',
-          transform: `translateX(calc((var(--switcher-button-width) + 0.25rem) * ${selectedThemeIndex}))`,
+          transform: `
+            translateX(
+              calc(
+                (
+                  var(--switcher-button-width) +
+                  var(--switcher-button-gap)
+                ) * ${selectedThemeIndex}
+              )
+            )`,
         }}
       />
     </fieldset>

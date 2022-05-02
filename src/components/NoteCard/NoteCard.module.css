@@ -4,6 +4,7 @@
   color: var(--text-note-card);
   outline: 1px solid var(--border-base);
   outline-offset: -1px;
+  transition: var(--theme-transtion);
 }
 
 .cardLink {

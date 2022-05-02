@@ -11,6 +11,7 @@
   background-color: var(--background-header);
   box-shadow: 0 1px 0 0 var(--border-base);
   overflow-x: auto;
+  transition: var(--theme-transtion);
 }
 
 .header::-webkit-scrollbar {

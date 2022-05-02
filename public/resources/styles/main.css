@@ -76,3 +76,9 @@ body {
     font-size: var(--fs-3xl);
   }
 }
+
+@media (prefers-reduced-motion) {
+  :root {
+    --theme-transition-time: 0s;
+  }
+}

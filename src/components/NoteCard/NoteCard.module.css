@@ -9,7 +9,6 @@
   background-size: auto;
   border-radius: var(--radius-xl);
   color: var(--text-note-card);
-  transition: var(--theme-transtion);
 }
 
 .card:nth-child(5n + 1) {
@@ -61,6 +60,7 @@
   background: var(--background-note-card);
   border-radius: var(--radius-l);
   row-gap: var(--gap-s);
+  transition: var(--theme-transtion);
 }
 
 .cardTitle {

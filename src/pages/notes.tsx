@@ -46,7 +46,7 @@ export async function getStaticProps() {
 
   const noteCardsData: NoteCardData[] = articles.map((article) => ({
     slug: article.slug,
-    title: article.title,
+    title: tp.execute(article.title),
     description: article.description ? tp.execute(article.description) : null,
   }));
 

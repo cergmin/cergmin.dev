@@ -31,6 +31,7 @@ module.exports = {
     'import/prefer-default-export': ['off'],
     'no-alert': ['off'],
     'no-use-before-define': ['off'],
+    'no-prototype-builtins': ['off'],
     'react/prop-types': ['off'],
     'react/display-name': ['off'],
     'react/jsx-props-no-spreading': ['off'],

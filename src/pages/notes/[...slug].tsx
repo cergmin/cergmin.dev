@@ -2,18 +2,20 @@ import { join } from 'path';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { getArticle, Article } from '@/utilities/getArticle';
 import { getArticles } from '@/utilities/getArticles';
-import { parseMDX } from '@/utilities/parseMDX';
+import { parseMDX, Heading } from '@/utilities/parseMDX';
+import Toc from '@/components/Toc';
+import Callout from '@/components/Callout';
 import clsx from 'clsx';
 import s from '@/resources/styles/pages/note.module.css';
-import Callout from '@/components/Callout';
 
 interface NotePageProps {
   note: Article;
   mdxSource: MDXRemoteSerializeResult;
+  headings: Heading[];
   error: number;
 }
 
-function NotePage({ note, mdxSource, error }: NotePageProps) {
+function NotePage({ note, mdxSource, headings, error }: NotePageProps) {
   if (error) {
     return (
       <main>
@@ -38,6 +40,9 @@ function NotePage({ note, mdxSource, error }: NotePageProps) {
             <h1 className="pageTitle">{note?.title}</h1>
             <MDXRemote {...mdxSource} components={mdxComponents} />
           </article>
+          <div className={s.sidebar}>
+            <Toc className={s.toc} headings={headings} />
+          </div>
         </div>
       </div>
     </main>
@@ -52,6 +57,7 @@ export async function getStaticProps(context) {
 
   let note: Article = null;
   let mdxSource: MDXRemoteSerializeResult<Record<string, unknown>> = null;
+  let headings: Heading[] = [];
   let error = null;
 
   try {
@@ -65,6 +71,7 @@ export async function getStaticProps(context) {
     if (!error) {
       const parsedMDX = await parseMDX(note.content);
       mdxSource = parsedMDX.source;
+      headings = parsedMDX.headings;
     }
   } catch (e) {
     console.error('MDX parsing error!');
@@ -72,7 +79,7 @@ export async function getStaticProps(context) {
     error = 500;
   }
 
-  return { props: { note, mdxSource, error } };
+  return { props: { note, mdxSource, headings, error } };
 }
 
 export async function getStaticPaths() {

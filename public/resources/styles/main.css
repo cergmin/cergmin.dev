@@ -18,6 +18,7 @@
   --fs-6xl: 3rem;
   --lh-tight: 1.25;
   --lh-base: 1.6;
+  --gap-xs: 0.25rem;
   --gap-s: 0.5rem;
   --gap-m: 0.75rem;
   --gap-l: 1rem;
@@ -33,6 +34,8 @@
   --radius-m: 5px;
   --radius-l: 7px;
   --radius-xl: 10px;
+
+  --header-height: 3rem;
 
   --theme-transition-time: 0.15s;
   --theme-transtion: var(--theme-transition-time) ease-out background;

@@ -7,6 +7,8 @@ interface NoteCardData {
   slug: string;
   title: string;
   description: string;
+  date?: string;
+  tag?: string;
 }
 
 interface NotesPageProps {
@@ -27,6 +29,8 @@ function NotesPage({ noteCardsData }: NotesPageProps) {
                   key={data.slug}
                   title={data.title}
                   description={data.description}
+                  date={data.date}
+                  tag={data.tag}
                   url={data.slug}
                 />
               );
@@ -48,6 +52,8 @@ export async function getStaticProps() {
     slug: article.slug,
     title: tp.execute(article.title),
     description: article.description ? tp.execute(article.description) : null,
+    date: article.frontMatter.date || null,
+    tag: article.frontMatter.tag || null,
   }));
 
   return { props: { noteCardsData } };

@@ -63,6 +63,16 @@
   transition: var(--theme-transtion);
 }
 
+.cardMeta {
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: var(--gap-l);
+  color: var(--text-faint);
+  font-size: var(--fs-s);
+}
+
 .cardTitle {
   font-size: var(--fs-xl);
   font-weight: 600;

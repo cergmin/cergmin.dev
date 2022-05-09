@@ -8,6 +8,8 @@ interface NoteCardProps {
   style?: CSSProperties;
   title: string;
   description?: string;
+  date?: string;
+  tag?: string;
   url: string;
 }
 
@@ -16,8 +18,14 @@ const NoteCard = ({
   style,
   title,
   description,
+  date,
+  tag,
   url,
 }: NoteCardProps) => {
+  if (tag) {
+    tag = tag.toString().split(' ').join(' • ').toUpperCase();
+  }
+
   return (
     <article className={clsx(s.card, className)} style={style}>
       <Link href={url}>
@@ -25,6 +33,12 @@ const NoteCard = ({
           <div className={s.cardLayout}>
             <h2 className={s.cardTitle}>{title}</h2>
             {description && <p className={s.cardDescription}>{description}</p>}
+            {(date || tag) && (
+              <p className={s.cardMeta}>
+                <span>{date}</span>
+                <span>{tag}</span>
+              </p>
+            )}
           </div>
         </a>
       </Link>

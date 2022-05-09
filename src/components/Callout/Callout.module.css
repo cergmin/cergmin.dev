@@ -1,0 +1,34 @@
+.callout {
+  --callout-accent-color: var(--text-callout-blue);
+
+  padding: var(--block-margin-xs) var(--block-margin-l);
+  border: 1px solid var(--border-base);
+  border-left: 4px solid var(--callout-accent-color);
+  margin-bottom: calc(var(--content-rhythm) * 2);
+  background: var(--background-faint);
+  border-radius: var(--radius-m);
+  overflow-x: auto;
+  transition: var(--theme-transtion);
+}
+
+.callout[data-type='theorem'] {
+  --callout-accent-color: var(--text-callout-orange);
+}
+
+.callout + .callout {
+  margin-top: calc(var(--content-rhythm) * -2 + var(--block-margin-s));
+}
+
+.callout > *:last-child,
+.callout > *:last-child > *:last-child {
+  margin-bottom: 0;
+}
+
+.calloutHeading {
+  display: block;
+}
+
+.calloutHeadingTitle {
+  color: var(--callout-accent-color);
+  font-weight: 500;
+}

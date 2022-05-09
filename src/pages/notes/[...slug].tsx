@@ -1,14 +1,11 @@
 import { join } from 'path';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { serialize as MDXSerialize } from 'next-mdx-remote/serialize';
-import remarkParse from 'remark-parse';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import remarkTypograf from '@mavrin/remark-typograf';
 import { getArticle, Article } from '@/utilities/getArticle';
 import { getArticles } from '@/utilities/getArticles';
+import { parseMDX } from '@/utilities/parseMDX';
 import clsx from 'clsx';
 import s from '@/resources/styles/pages/note.module.css';
+import Callout from '@/components/Callout';
 
 interface NotePageProps {
   note: Article;
@@ -29,13 +26,17 @@ function NotePage({ note, mdxSource, error }: NotePageProps) {
     );
   }
 
+  const mdxComponents = {
+    Callout,
+  };
+
   return (
     <main>
       <div className="wrapper">
         <div className={s.layout}>
           <article className={clsx(s.note, 'article')}>
             <h1 className="pageTitle">{note?.title}</h1>
-            <MDXRemote {...mdxSource} />
+            <MDXRemote {...mdxSource} components={mdxComponents} />
           </article>
         </div>
       </div>
@@ -62,24 +63,11 @@ export async function getStaticProps(context) {
 
   try {
     if (!error) {
-      mdxSource = await MDXSerialize(note.content, {
-        mdxOptions: {
-          // ts-ignore reasons:
-          // https://github.com/hashicorp/next-mdx-remote/issues/86
-          remarkPlugins: [
-            // @ts-ignore
-            remarkParse,
-            // @ts-ignore
-            remarkMath,
-            [remarkTypograf, { locale: ['ru', 'en-US'] }],
-          ],
-          // @ts-ignore
-          rehypePlugins: [rehypeKatex],
-        },
-      });
+      const parsedMDX = await parseMDX(note.content);
+      mdxSource = parsedMDX.source;
     }
   } catch (e) {
-    console.error('MDXSerialize error!');
+    console.error('MDX parsing error!');
     console.error(e);
     error = 500;
   }

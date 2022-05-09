@@ -14,6 +14,9 @@
   --text-code: #fff;
   --text-note-card: var(--text-base);
 
+  --text-callout-blue: var(--blue-700);
+  --text-callout-orange: hsl(25deg 95% 35%);
+
   --border-base: hsl(216deg 10% 10% / 18%);
 
   color-scheme: light;

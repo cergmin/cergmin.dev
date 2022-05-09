@@ -15,7 +15,7 @@
   margin-top: calc(var(--content-rhythm) * 2);
   margin-bottom: calc(var(--content-rhythm) / 2);
   font-family: var(--ff-sans-serif);
-  font-weight: 700;
+  font-weight: 500;
   line-height: var(--lh-tight);
 }
 
@@ -23,6 +23,7 @@
   margin-top: calc(var(--content-rhythm) * 3);
   margin-bottom: var(--content-rhythm);
   font-size: 1.5em;
+  font-weight: 700;
 }
 
 .article h3 {
@@ -42,14 +43,15 @@
   font-size: 0.875em;
 }
 
-.article h1 + h2,
-.article h1 + h3,
-.article h1 + h4,
-.article h1 + h5,
-.article h1 + h6,
 .article h2 + h3,
+.article h2 + h4,
+.article h2 + h5,
+.article h2 + h6,
 .article h3 + h4,
+.article h3 + h5,
+.article h3 + h6,
 .article h4 + h5,
+.article h4 + h6,
 .article h5 + h6 {
   margin-top: calc(var(--content-rhythm) / 2);
 }
@@ -116,4 +118,17 @@
 .article pre code {
   padding: 0;
   background: transparent;
+}
+
+.article .katex {
+  font-size: calc(21 / 18 * 1em);
+}
+
+.katex-display.fleqn > .katex {
+  padding-left: 0;
+}
+
+.article .katex .newline {
+  display: block;
+  height: 1rem;
 }

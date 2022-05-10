@@ -13,6 +13,7 @@
   --text-accent: var(--blue-700);
   --text-code: #fff;
   --text-note-card: var(--text-base);
+  --text-name-fallback: hsl(262deg 55% 50%);
 
   --text-callout-blue: var(--blue-700);
   --text-callout-orange: hsl(25deg 95% 35%);

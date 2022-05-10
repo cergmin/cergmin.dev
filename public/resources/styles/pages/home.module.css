@@ -3,3 +3,36 @@
   padding-top: var(--block-margin-m);
   padding-bottom: var(--block-margin-2xl);
 }
+
+.introductionTitle {
+  margin-bottom: var(--block-margin-m);
+  font-size: clamp(3rem, 1rem + 6.25vw, 5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.introductionTitle .name {
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-color: var(--text-name-fallback);
+  background-image: linear-gradient(
+    315deg,
+    hsl(225deg 70% 50%) 0%,
+    hsl(263deg 56% 54%) 21%,
+    hsl(291deg 54% 47%) 30%,
+    hsl(312deg 66% 46%) 39%,
+    hsl(325deg 75% 48%) 46%,
+    hsl(337deg 86% 55%) 54%,
+    hsl(355deg 100% 65%) 61%,
+    hsl(16deg 100% 63%) 69%,
+    hsl(32deg 100% 57%) 79%,
+    hsl(45deg 100% 50%) 100%
+  );
+  color: transparent;
+}
+
+.introductionDescription {
+  color: var(--text-faint);
+  font-size: clamp(1.125rem, 0.75rem + 1.17vw, 1.5rem);
+  line-height: var(--lh-base);
+}

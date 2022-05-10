@@ -9,10 +9,11 @@
   --background-switcher-button: hsl(220deg 5% 18%);
 
   --text-base: #fff;
-  --text-faint: hsl(220deg 4% 80%);
+  --text-faint: hsl(220deg 4% 65%);
   --text-accent: hsl(210deg 100% 60%);
   --text-code: var(--white);
   --text-note-card: var(--text-base);
+  --text-name-fallback: hsl(262deg 50% 60%);
 
   --text-callout-blue: hsl(210deg 100% 60%);
   --text-callout-orange: hsl(25deg 95% 60%);

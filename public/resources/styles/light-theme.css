@@ -1,12 +1,13 @@
 :root {
   --background-base: #fff;
-  --background-faint: #f6f6f6;
+  --background-faint: hsl(220deg 7% 92%);
+  --background-elevated: #fff;
+
   --background-header: #fff;
   --background-code: hsl(220deg 5% 12%);
-  --background-note-card: var(--background-faint);
-
-  --background-switcher: hsl(220deg 7% 92%);
-  --background-switcher-button: hsl(220deg 7% 100%);
+  --background-note-card: #fff;
+  --background-switcher: var(--background-faint);
+  --background-switcher-button: var(--background-elevated);
 
   --text-base: var(--gray-900);
   --text-faint: var(--gray-700);

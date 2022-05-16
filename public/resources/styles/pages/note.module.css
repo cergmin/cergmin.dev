@@ -24,6 +24,10 @@
 }
 
 @media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
   .note {
     max-width: 700px;
     margin: 0 auto;

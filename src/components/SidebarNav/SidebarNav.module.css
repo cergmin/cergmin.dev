@@ -1,0 +1,182 @@
+.focusTrap {
+  position: fixed;
+  opacity: 0;
+}
+
+@keyframes slide-enter {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+.animationSlideEnter {
+  animation: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1) slide-enter;
+}
+
+@keyframes slide-leave {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.animationSlideLeave {
+  animation: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1) slide-leave;
+}
+
+@keyframes fade-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+.animationFadeEnter {
+  animation: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1) fade-enter;
+}
+
+@keyframes fade-leave {
+  to {
+    opacity: 0;
+  }
+}
+
+.animationFadeLeave {
+  animation: 0.25s cubic-bezier(0.25, 0.1, 0.25, 1) fade-leave;
+}
+
+.animationSlideEnter,
+.animationSlideLeave,
+.animationFadeEnter,
+.animationFadeLeave {
+  animation-fill-mode: forwards;
+}
+
+.sidebarShade {
+  position: fixed;
+  z-index: 998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0deg 0% 0% / 60%);
+}
+
+.sidebar {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  display: flex;
+  width: 300px;
+  max-width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--background-header);
+  transform: translateX(0);
+  transition: var(--theme-transition);
+}
+
+.bottomSection {
+  padding: 0 var(--wrapper-padding) var(--wrapper-padding);
+}
+
+.topBar {
+  display: flex;
+  width: 100%;
+  height: var(--header-height);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--wrapper-padding);
+  margin-bottom: var(--block-margin-m);
+  box-shadow: var(--shadow-header);
+}
+
+.title {
+  color: var(--text-base);
+  font-size: var(--fs-2xl);
+  font-weight: 500;
+}
+
+.closeButton {
+  display: flex;
+  width: var(--header-height);
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  border-radius: 5px;
+  color: var(--base-color);
+  opacity: 0.75;
+  outline: 2px solid transparent;
+  outline-offset: 1px;
+  transition: 0.05s ease-out transform, 0.05s ease-out opacity;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.closeButton:focus-visible {
+  border-radius: calc(var(--radius-m) + 6px);
+  opacity: 1;
+  outline: 2px solid var(--text-accent);
+  outline-offset: -6px;
+}
+
+.closeButton:active {
+  transform: scale(0.9);
+}
+
+.closeButtonIcon {
+  width: 80%;
+  fill: currentColor;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.menuItemLink {
+  display: block;
+  padding: var(--gap-m) var(--wrapper-padding);
+  border-radius: calc(var(--radius-m) + 4px);
+  color: var(--text-faint);
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  outline-offset: -4px;
+  text-decoration: none;
+}
+
+.menuItemLink:hover {
+  color: var(--text-accent);
+}
+
+.menuItemLink:focus-visible {
+  outline: 2px solid var(--text-accent);
+}
+
+.themeSwitcher {
+  width: 100%;
+  height: 2.5rem;
+}
+
+@media (prefers-reduced-motion) {
+  .animationSlideEnter {
+    animation: 0s linear slide-enter;
+  }
+
+  .animationSlideLeave {
+    animation: 0s linear slide-leave;
+  }
+
+  .animationFadeEnter {
+    animation: 0s linear fade-enter;
+  }
+
+  .animationFadeLeave {
+    animation: 0s linear fade-leave;
+  }
+}

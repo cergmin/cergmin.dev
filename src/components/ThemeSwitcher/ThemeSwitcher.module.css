@@ -1,20 +1,20 @@
 .switcher {
-  --switcher-button-width: 4.5rem;
   --switcher-button-gap: 0.25rem;
 
   position: relative;
-  display: grid;
+  display: flex;
+  width: fit-content;
   height: 2rem;
+  align-items: center;
+  justify-content: center;
   padding: var(--switcher-button-gap);
   border: none;
   background: var(--background-switcher);
   border-radius: var(--radius-l);
   gap: var(--switcher-button-gap);
-  grid-template-columns: repeat(3, 1fr);
   isolation: isolate; /* create stacking context */
   outline: 1px solid var(--border-base);
-  place-items: center;
-  transition: var(--theme-transtion);
+  transition: var(--theme-transition);
 }
 
 .switcherLegend {
@@ -33,10 +33,11 @@
 .switcherButton {
   position: relative;
   display: flex;
-  width: var(--switcher-button-width);
+  width: 100%;
   height: 100%;
   align-items: center;
   justify-content: center;
+  padding: 0 0.75rem;
   border-radius: var(--radius-m);
 }
 
@@ -76,17 +77,18 @@
   outline: 2px solid var(--text-accent);
 }
 
-.switcherStatus {
+.switcherIndicator {
   position: absolute;
   z-index: -1;
   top: var(--switcher-button-gap);
   bottom: var(--switcher-button-gap);
-  left: var(--switcher-button-gap);
-  width: var(--switcher-button-width);
-  height: auto;
+  left: 0;
+  width: 50px;
+  height: calc(100% - var(--switcher-button-gap) * 2);
   background: var(--background-switcher-button);
   border-radius: var(--radius-m);
   outline: 1px solid var(--border-base);
-  transition: var(--theme-transtion),
-    var(--theme-transition-time) ease-out transform;
+  transition: var(--theme-transition),
+    var(--theme-transition-time) ease-out transform,
+    var(--theme-transition-time) ease-out width;
 }

@@ -60,7 +60,7 @@
   background: var(--background-note-card);
   border-radius: var(--radius-l);
   row-gap: var(--gap-s);
-  transition: var(--theme-transtion);
+  transition: var(--theme-transition);
 }
 
 .cardMeta {

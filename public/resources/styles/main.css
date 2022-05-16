@@ -36,9 +36,14 @@
   --radius-xl: 10px;
 
   --header-height: 3rem;
+  --wrapper-max-width: 1000px;
+  --wrapper-padding: clamp(16px, 3.2vw, 32px);
+
+  --shadow-header: 0 1px 1px 0 hsl(0deg 0% 0% / 0.08),
+    0 6px 6px -3px hsl(0deg 0% 0% / 0.05);
 
   --theme-transition-time: 0.15s;
-  --theme-transtion: var(--theme-transition-time) ease-out background;
+  --theme-transition: var(--theme-transition-time) ease-out background;
 }
 
 body {
@@ -46,13 +51,10 @@ body {
   color: var(--text-base);
   font-family: var(--ff-sans-serif, sans-serif);
   overflow-y: scroll;
-  transition: var(--theme-transtion);
+  transition: var(--theme-transition);
 }
 
 .wrapper {
-  --wrapper-max-width: 1000px;
-  --wrapper-padding: clamp(16px, 3.2vw, 32px);
-
   width: 100%;
   max-width: calc(var(--wrapper-max-width) + 2 * var(--wrapper-padding));
   height: 100%;

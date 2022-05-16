@@ -8,7 +8,7 @@
   background: var(--background-faint);
   border-radius: var(--radius-m);
   overflow-x: auto;
-  transition: var(--theme-transtion);
+  transition: var(--theme-transition);
 }
 
 .callout[data-type='theorem'] {

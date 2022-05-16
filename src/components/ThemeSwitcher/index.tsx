@@ -1,4 +1,11 @@
-import { useState, ChangeEvent, useEffect, useMemo } from 'react';
+import {
+  useState,
+  useId,
+  ChangeEvent,
+  useEffect,
+  forwardRef,
+  Ref,
+} from 'react';
 import clsx from 'clsx';
 import {
   getColorTheme,
@@ -11,8 +18,11 @@ interface ThemeSwitcherProps {
   className?: string;
 }
 
-const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+const ThemeSwitcher = ({ className }: ThemeSwitcherProps, ref: Ref<any>) => {
+  const id = useId();
   const [selectedTheme, setSelectedTheme] = useState('');
+  const [indicatorWidth, setIndicatorWidth] = useState(0);
+  const [indicatorOffset, setIndicatorOffset] = useState(0);
 
   const updateSelectedColorTheme = () => setSelectedTheme(getColorTheme());
 
@@ -25,13 +35,23 @@ const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
     };
   }, []);
 
-  const selectedThemeIndex = useMemo(
-    () =>
-      Object.values(themeOptions)
-        .map((option) => option.value)
-        .indexOf(selectedTheme),
-    [selectedTheme],
-  );
+  useEffect(() => {
+    const themeSwitcher = document.getElementById(`theme_switcher_${id}`);
+    const selectedThemeLabel = document.getElementById(
+      `${selectedTheme}_color_theme_label_${id}`,
+    );
+
+    if (!themeSwitcher || !selectedThemeLabel) {
+      setIndicatorWidth(0);
+      return;
+    }
+
+    setIndicatorWidth(selectedThemeLabel.clientWidth);
+    setIndicatorOffset(
+      selectedThemeLabel.getBoundingClientRect().left -
+        themeSwitcher.getBoundingClientRect().left,
+    );
+  }, [selectedTheme]);
 
   const handleValueChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelectedTheme(e.currentTarget.value);
@@ -39,23 +59,27 @@ const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
   };
 
   return (
-    <fieldset className={clsx(s.switcher, className)}>
+    <fieldset
+      className={clsx(s.switcher, className)}
+      id={`theme_switcher_${id}`}>
       <legend className={s.switcherLegend}>Тема</legend>
       {themeOptions.map((option) => (
         <label
-          key={`${option.value}_color_theme_label`}
+          key={`${option.value}_color_theme_label_${id}`}
+          id={`${option.value}_color_theme_label_${id}`}
           className={clsx(
             s.switcherButton,
             option.value === selectedTheme && s.switcherButtonSelected,
           )}
-          htmlFor={`${option.value}_color_theme_radio`}>
+          htmlFor={`${option.value}_color_theme_radio_${id}`}>
           <span className={s.switcherButtonText}>{option.label}</span>
         </label>
       ))}
       {themeOptions.map((option) => (
         <input
-          key={`${option.value}_color_theme_radio`}
-          id={`${option.value}_color_theme_radio`}
+          key={`${option.value}_color_theme_radio_${id}`}
+          id={`${option.value}_color_theme_radio_${id}`}
+          ref={ref}
           className={s.switcherRadio}
           type="radio"
           name="color-theme"
@@ -67,21 +91,15 @@ const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
       ))}
       <div className={s.switcherOutline} />
       <div
-        className={s.switcherStatus}
+        className={s.switcherIndicator}
         style={{
-          display: selectedThemeIndex === -1 ? 'none' : 'block',
-          transform: `
-            translateX(
-              calc(
-                (
-                  var(--switcher-button-width) +
-                  var(--switcher-button-gap)
-                ) * ${selectedThemeIndex}
-              )
-            )`,
+          display: indicatorWidth === 0 ? 'none' : 'block',
+          width: indicatorWidth,
+          transform: `translateX(${indicatorOffset}px)`,
         }}
       />
     </fieldset>
   );
 };
-export default ThemeSwitcher;
+
+export default forwardRef(ThemeSwitcher);
